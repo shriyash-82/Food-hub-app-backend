@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
-MONGO_URL = "mongodb+srv://shriyashawasthi01feb:SHRIyash123@cluster0.uk1z5e3.mongodb.net/FoodAppMern?retryWrites=true&w=majority"
-
+// MONGO_URL = "mongodb+srv://shriyashawasthi01feb:SHRIyash123@cluster0.uk1z5e3.mongodb.net/FoodAppMern?retryWrites=true&w=majority"
+const dotenv = require('dotenv');
+dotenv.config();
 const mongodb = async () => {
     try {
         mongoose.set('strictQuery', false)
-        mongoose.connect(MONGO_URL)
+        mongoose.connect(process.env.MONGO_URL)
         // fetching food item data 
         const fetched_data = mongoose.connection.collection("Food_items");
         fetched_data.find({}, (err, res) => err ? reject(err) : res.toArray().then(function(x){
