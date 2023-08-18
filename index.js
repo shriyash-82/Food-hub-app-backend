@@ -5,6 +5,7 @@ const createUser = require("./routes/createUser")
 const userLogin = require("./routes/login")
 const displayData = require("./routes/displayData")
 const orderData = require("./routes/Orderdata")
+const cors = require('cors')
 const PORT = process.env.port || 5000
 // implementing cors
  app.use( (req,res,next) => {
@@ -17,6 +18,7 @@ const PORT = process.env.port || 5000
  })
 // ---------------------------------------------------------------------------
 mongodb()
+app.use(cors())
 app.use(express.json())
 app.use("/api",createUser )
 app.use("/api", userLogin)
